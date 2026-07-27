@@ -1,152 +1,77 @@
 /* ==========================================================================
-   CloudHoste Design System Tokens & ShufyTheme Styling Overrides
+   CloudHoste Official Design System Overrides (https://cloudhoste.eu)
    ========================================================================== */
 
 :root {
-  /* CloudHoste Font Infrastructure */
-  --ch-font-display: 'Space Grotesk', 'Phudu', sans-serif;
-  --ch-font-heading: 'Phudu', 'Inter', sans-serif;
-  --ch-font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  /* Primary Brand Tokens */
   --ch-lime: #C4EE18;
   --ch-lime-hover: #B8D61A;
-  --ch-lime-active: #A3C014;
   --ch-lime-glow: rgba(196, 238, 24, 0.25);
-  
-  /* Primary Accent Colors */
   --ch-indigo: #4942E4;
-  --ch-indigo-hover: #3b35c6;
-  --ch-blue: #0D6EFD;
-  --ch-cyan: #0DCAF0;
-  
-  /* Dark Canvas Defaults */
-  --ch-bg-body-dark: #0b0e1a;
-  --ch-bg-surface-dark: #121314;
-  --ch-bg-card-dark: #1A1C1E;
-  --ch-text-heading-dark: #FFFFFF;
-  --ch-text-body-dark: #E2E8F0;
-  --ch-text-muted-dark: #BFBFC0;
-  --ch-border-dark: rgba(255, 255, 255, 0.1);
-
-  /* Light Canvas Defaults */
-  --ch-bg-body-light: #F8FAFC;
-  --ch-bg-surface-light: #FFFFFF;
-  --ch-bg-card-light: #FFFFFF;
-  --ch-text-heading-light: #0F172A;
-  --ch-text-body-light: #334155;
-  --ch-text-muted-light: #64748B;
-  --ch-border-light: rgba(15, 23, 42, 0.12);
+  --ch-indigo-hover: #3B35C6;
+  --ch-navy: #0b0e1a;
+  --ch-surface-card: #1A1C1E;
 }
 
-/* ==========================================================================
-   Primary Buttons & CTA Enhancements (CloudHoste Lime & Indigo)
-   ========================================================================== */
-
+/* Primary CTA Buttons - Electric Lime */
 .btn-primary, 
 button.btn-primary, 
 a.btn-primary,
+input[type="submit"].btn-primary,
 .add__new__group__btn {
-  background-color: var(--ch-lime) !important;
+  background-color: #C4EE18 !important;
+  border-color: #C4EE18 !important;
   color: #030303 !important;
-  font-family: var(--ch-font-body);
   font-weight: 600 !important;
-  border: none !important;
   border-radius: 24px !important;
-  box-shadow: 0px 4px 18px var(--ch-lime-glow) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0px 4px 18px rgba(196, 238, 24, 0.25) !important;
+  transition: all 0.25s ease !important;
 }
 
 .btn-primary:hover, 
 button.btn-primary:hover, 
 a.btn-primary:hover,
+input[type="submit"].btn-primary:hover,
 .add__new__group__btn:hover {
-  background-color: var(--ch-lime-hover) !important;
+  background-color: #B8D61A !important;
+  border-color: #B8D61A !important;
   color: #030303 !important;
   box-shadow: 0px 8px 24px rgba(196, 238, 24, 0.4) !important;
   transform: translateY(-2px) !important;
 }
 
-.btn-outline-primary,
-.btn-secondary {
-  background: transparent !important;
-  color: var(--ch-indigo) !important;
-  border: 2px solid var(--ch-indigo) !important;
+/* Links & Accents - Deep Indigo */
+a {
+  color: #4942E4;
+}
+
+a:hover {
+  color: #3B35C6;
+}
+
+.btn-outline-primary {
+  background-color: transparent !important;
+  border-color: #4942E4 !important;
+  color: #4942E4 !important;
   border-radius: 20px !important;
   font-weight: 600 !important;
-  transition: all 0.25s ease !important;
 }
 
-.btn-outline-primary:hover,
-.btn-secondary:hover {
-  background: var(--ch-indigo) !important;
+.btn-outline-primary:hover {
+  background-color: #4942E4 !important;
   color: #FFFFFF !important;
-  transform: translateY(-2px) !important;
 }
 
-/* ==========================================================================
-   Dark Mode Palette Overrides (Deep Navy & Slate)
-   ========================================================================== */
-
+/* Dark Mode Canvas */
 body.darkmode,
 html.dark body,
 [data-theme="dark"] body {
-  background-color: var(--ch-bg-body-dark) !important;
-  color: var(--ch-text-body-dark) !important;
+  background-color: #0b0e1a !important;
+  color: #E2E8F0 !important;
 }
 
 body.darkmode .card,
 body.darkmode .panel,
-body.darkmode .client-home-panels .panel-default,
-body.darkmode .coodiv__service__card,
 [data-theme="dark"] .card {
-  background-color: var(--ch-bg-card-dark) !important;
-  border: 1px solid var(--ch-border-dark) !important;
-}
-
-body.darkmode h1, body.darkmode h2, body.darkmode h3, 
-body.darkmode h4, body.darkmode h5, body.darkmode h6 {
-  color: var(--ch-text-heading-dark) !important;
-}
-
-/* ==========================================================================
-   Light Mode Palette Overrides (Crisp Slate & White)
-   ========================================================================== */
-
-body:not(.darkmode),
-html:not(.dark) body {
-  background-color: var(--ch-bg-body-light);
-  color: var(--ch-text-body-light);
-}
-
-body:not(.darkmode) .card,
-body:not(.darkmode) .panel {
-  background-color: var(--ch-bg-card-light);
-  border: 1px solid var(--ch-border-light);
-}
-
-body:not(.darkmode) h1, body:not(.darkmode) h2, body:not(.darkmode) h3, 
-body:not(.darkmode) h4, body:not(.darkmode) h5, body:not(.darkmode) h6 {
-  color: var(--ch-text-heading-light);
-}
-
-/* ==========================================================================
-   Link & Badge Highlights
-   ========================================================================== */
-
-a {
-  color: var(--ch-indigo);
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--ch-indigo-hover);
-}
-
-.badge-lime, .label-lime {
-  background-color: var(--ch-lime) !important;
-  color: #030303 !important;
-  font-weight: 700 !important;
-  padding: 4px 12px !important;
-  border-radius: 12px !important;
+  background-color: #1A1C1E !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
