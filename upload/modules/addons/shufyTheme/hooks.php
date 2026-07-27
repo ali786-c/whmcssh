@@ -108,56 +108,35 @@ add_hook('ClientAreaPrimaryNavbar', 1, function($primaryNavbar) {
     }
 });
 
-add_hook('ClientAreaPageHome', 1, function($vars) {
-    $groups = [];
-    try {
-        $currency = \WHMCS\Database\Capsule::table('tblcurrencies')->where('default', 1)->first();
-        $prefix = $currency->prefix ?? '€';
-        
-        $productGroups = \WHMCS\Database\Capsule::table('tblproductgroups')
-            ->where('hidden', 0)
-            ->orderBy('order', 'asc')
-            ->get();
-            
-        $colors = ['blue', 'green', 'purple', 'amber'];
-        $icons = ['fab fa-wordpress', 'fas fa-server', 'fas fa-desktop', 'fas fa-hdd', 'fas fa-cloud'];
-        
-        $i = 0;
-        foreach ($productGroups as $pg) {
-            $minPrice = null;
-            $product = \WHMCS\Database\Capsule::table('tblproducts')
-                ->where('gid', $pg->id)
-                ->where('hidden', 0)
-                ->orderBy('order', 'asc')
-                ->first();
+add_hook('ClientAreaPage', 10, function($vars) {
+    if (($vars['templatefile'] ?? '') === 'homepage') {
+        $activeGroups = [];
+        try {
+            $groups = \WHMCS\Product\Group::where('hidden', 0)->orderBy('order', 'asc')->get();
+            $colors = ['color__one', 'color__two', 'color__tree', 'color__four'];
+            $icons = ['fab fa-wordpress-simple', 'fal fa-database', 'fab fa-windows', 'fal fa-server'];
+            $index = 0;
+            foreach ($groups as $group) {
+                $firstProduct = $group->products()->where('hidden', 0)->first();
+                $minPrice = $firstProduct ? $firstProduct->pricing()->minprice() : null;
+                $priceFormatted = $minPrice ? $minPrice->toPrefixed() : '';
                 
-            if ($product) {
-                $pricing = \WHMCS\Database\Capsule::table('tblpricing')
-                    ->where('type', 'product')
-                    ->where('relid', $product->id)
-                    ->first();
-                if ($pricing) {
-                    if ($pricing->monthly > 0) $minPrice = $prefix . number_format($pricing->monthly, 2) . '/mo';
-                    elseif ($pricing->annually > 0) $minPrice = $prefix . number_format($pricing->annually / 12, 2) . '/mo';
-                }
+                $activeGroups[] = [
+                    'id' => $group->id,
+                    'name' => $group->name,
+                    'headline' => $group->headline ?: $group->name,
+                    'tagline' => $group->tagline ?: 'Optimized for speed, reliability, and security.',
+                    'slug' => $group->slug,
+                    'url' => "{$vars['WEB_ROOT']}/cart.php?gid={$group->id}",
+                    'price' => $priceFormatted ? "From {$priceFormatted}" : '',
+                    'color_class' => $colors[$index % count($colors)],
+                    'icon' => $icons[$index % count($icons)],
+                ];
+                $index++;
             }
-            
-            $groups[] = [
-                'id' => $pg->id,
-                'name' => $pg->name,
-                'headline' => $pg->headline ?: 'Optimized for speed and security.',
-                'tagline' => $pg->tagline ?: 'High-performance cloud & web hosting platform for your business.',
-                'slug' => $pg->slug,
-                'color' => $colors[$i % count($colors)],
-                'icon' => $icons[$i % count($icons)],
-                'minPrice' => $minPrice ?: ($prefix . '2.49/mo'),
-                'url' => ($vars['WEB_ROOT'] ?? '') . '/cart.php?gid=' . $pg->id
-            ];
-            $i++;
+        } catch (\Exception $e) {
+            // Fallback gracefully
         }
-    } catch (\Exception $e) {
-        // Fallback
+        return ['activeProductGroups' => $activeGroups];
     }
-    
-    return ['chDynamicProductGroups' => $groups];
 });
