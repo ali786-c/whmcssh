@@ -22,7 +22,6 @@ function shufyTheme_config() {
 
 function shufyTheme_activate() {
     try {
-        // Initialize default settings in tbladdonmodules if not set
         $defaults = [
             'theme_color' => 'default-color',
             'allow_dark_mode' => 'activated',
@@ -69,30 +68,42 @@ function shufyTheme_deactivate() {
 }
 
 function shufyTheme_get_setting($key, $default = '') {
-    $row = Capsule::table('tbladdonmodules')
-        ->where('module', 'shufyTheme')
-        ->where('setting', $key)
-        ->first();
-    return $row ? $row->value : $default;
+    try {
+        $row = Capsule::table('tbladdonmodules')
+            ->where('module', 'shufyTheme')
+            ->where('setting', $key)
+            ->first();
+        return $row ? $row->value : $default;
+    } catch (\Exception $e) {
+        return $default;
+    }
 }
 
 function shufyTheme_set_setting($key, $value) {
-    $exists = Capsule::table('tbladdonmodules')
-        ->where('module', 'shufyTheme')
-        ->where('setting', $key)
-        ->exists();
-    if ($exists) {
-        Capsule::table('tbladdonmodules')
+    try {
+        $exists = Capsule::table('tbladdonmodules')
             ->where('module', 'shufyTheme')
             ->where('setting', $key)
-            ->update(['value' => $value]);
-    } else {
-        Capsule::table('tbladdonmodules')->insert([
-            'module' => 'shufyTheme',
-            'setting' => $key,
-            'value' => $value
-        ]);
+            ->exists();
+        if ($exists) {
+            Capsule::table('tbladdonmodules')
+                ->where('module', 'shufyTheme')
+                ->where('setting', $key)
+                ->update(['value' => $value]);
+        } else {
+            Capsule::table('tbladdonmodules')->insert([
+                'module' => 'shufyTheme',
+                'setting' => $key,
+                'value' => $value
+            ]);
+        }
+    } catch (\Exception $e) {
+        // Log exception if database is locked or table missing
     }
+}
+
+function shufyTheme_sel($val1, $val2) {
+    return ($val1 === $val2) ? 'selected="selected"' : '';
 }
 
 function shufyTheme_output($vars) {
@@ -114,7 +125,7 @@ function shufyTheme_output($vars) {
             shufyTheme_set_setting($setting, $val);
         }
 
-        $message = '<div class="alert alert-success"><i class="fas fa-check-circle"></i> Settings saved successfully! Theme configuration updated.</div>';
+        $message = '<div class="alert alert-success" style="margin-bottom: 20px;"><i class="fas fa-check-circle mr-2"></i> Settings saved successfully! Theme configuration updated.</div>';
     }
 
     // Load current values
@@ -126,10 +137,6 @@ function shufyTheme_output($vars) {
     $sidebarStyle = shufyTheme_get_setting('sidebar_style', 'sidebarheaderlogo');
     $fixedTopHeader = shufyTheme_get_setting('fixed_top_header', 'activated');
     $fixedHorizontalMenu = shufyTheme_get_setting('fixed_horizontal_menu', 'activated');
-    $customLoader = shufyTheme_get_setting('custom_loader', 'loaderdisbaled');
-    $userDropdown = shufyTheme_get_setting('user_dropdown', 'activated');
-    $cartDropdown = shufyTheme_get_setting('cart_dropdown', 'activated');
-    $notificationDropdown = shufyTheme_get_setting('notification_dropdown', 'activated');
 
     $hpMcBanners = shufyTheme_get_setting('hp_mc_banners', 'activated');
     $hpMcBannersNav = shufyTheme_get_setting('hp_mc_banners_nav', 'activated');
@@ -138,6 +145,48 @@ function shufyTheme_output($vars) {
     $hpAnnouncements = shufyTheme_get_setting('hp_announcements', 'activated');
     $hpSavingBanner = shufyTheme_get_setting('hp_saving_banner', 'activated');
     $hpSubscribe = shufyTheme_get_setting('hp_subscribe', 'activated');
+
+    // Pre-calculate selections
+    $selColorDefault = shufyTheme_sel($themeColor, 'default-color');
+    $selColorOne = shufyTheme_sel($themeColor, 'theme-style-one');
+    $selColorTwo = shufyTheme_sel($themeColor, 'theme-style-two');
+    $selColorThree = shufyTheme_sel($themeColor, 'theme-style-three');
+    $selColorFour = shufyTheme_sel($themeColor, 'theme-style-four');
+
+    $selDarkAllowAct = shufyTheme_sel($allowDarkMode, 'activated');
+    $selDarkAllowDis = shufyTheme_sel($allowDarkMode, 'disabled');
+
+    $selDarkDefLight = shufyTheme_sel($defaultDarkMode, '');
+    $selDarkDefAct = shufyTheme_sel($defaultDarkMode, 'activated');
+
+    $selSbMin = shufyTheme_sel($sidebarLayout, 'minimalist__sidebar');
+    $selSbBig = shufyTheme_sel($sidebarLayout, 'big__icons__sidebar');
+    $selSbSep = shufyTheme_sel($sidebarLayout, 'separated__sidebar');
+
+    $selPosLeft = shufyTheme_sel($sidebarPosition, 'sidebarpositionleft');
+    $selPosRight = shufyTheme_sel($sidebarPosition, 'sidebarpositionright');
+    $selPosTop = shufyTheme_sel($sidebarPosition, 'sidebarpositiontop');
+
+    $selFixHdrAct = shufyTheme_sel($fixedTopHeader, 'activated');
+    $selFixHdrDis = shufyTheme_sel($fixedTopHeader, 'disabled');
+
+    $selMcBanAct = shufyTheme_sel($hpMcBanners, 'activated');
+    $selMcBanDis = shufyTheme_sel($hpMcBanners, 'disabled');
+
+    $selMcNavAct = shufyTheme_sel($hpMcBannersNav, 'activated');
+    $selMcNavDis = shufyTheme_sel($hpMcBannersNav, 'disabled');
+
+    $selProdAct = shufyTheme_sel($hpProducts, 'activated');
+    $selProdDis = shufyTheme_sel($hpProducts, 'disabled');
+
+    $selFeatAct = shufyTheme_sel($hpFeatures, 'activated');
+    $selFeatDis = shufyTheme_sel($hpFeatures, 'disabled');
+
+    $selAnnAct = shufyTheme_sel($hpAnnouncements, 'activated');
+    $selAnnDis = shufyTheme_sel($hpAnnouncements, 'disabled');
+
+    $selSubAct = shufyTheme_sel($hpSubscribe, 'activated');
+    $selSubDis = shufyTheme_sel($hpSubscribe, 'disabled');
 
     $csrfToken = generate_token('plain');
 
@@ -162,25 +211,25 @@ function shufyTheme_output($vars) {
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Default Theme Accent Color</label>
                         <select name="theme_color" class="form-control">
-                            <option value="default-color" {$this_sel($themeColor, 'default-color')}>Default Blue Theme</option>
-                            <option value="theme-style-one" {$this_sel($themeColor, 'theme-style-one')}>Style 1 - Classic Dark</option>
-                            <option value="theme-style-two" {$this_sel($themeColor, 'theme-style-two')}>Style 2 - Emerald Green</option>
-                            <option value="theme-style-three" {$this_sel($themeColor, 'theme-style-three')}>Style 3 - Royal Purple</option>
-                            <option value="theme-style-four" {$this_sel($themeColor, 'theme-style-four')}>Style 4 - Ruby Red</option>
+                            <option value="default-color" {$selColorDefault}>Default Blue Theme</option>
+                            <option value="theme-style-one" {$selColorOne}>Style 1 - Classic Dark</option>
+                            <option value="theme-style-two" {$selColorTwo}>Style 2 - Emerald Green</option>
+                            <option value="theme-style-three" {$selColorThree}>Style 3 - Royal Purple</option>
+                            <option value="theme-style-four" {$selColorFour}>Style 4 - Ruby Red</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Allow Dark Mode Switcher</label>
                         <select name="allow_dark_mode" class="form-control">
-                            <option value="activated" {$this_sel($allowDarkMode, 'activated')}>Activated (Show Switcher)</option>
-                            <option value="disabled" {$this_sel($allowDarkMode, 'disabled')}>Disabled</option>
+                            <option value="activated" {$selDarkAllowAct}>Activated (Show Switcher)</option>
+                            <option value="disabled" {$selDarkAllowDis}>Disabled</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Default Dark Mode</label>
                         <select name="default_dark_mode" class="form-control">
-                            <option value="" {$this_sel($defaultDarkMode, '')}>Light Mode Default</option>
-                            <option value="activated" {$this_sel($defaultDarkMode, 'activated')}>Dark Mode Default</option>
+                            <option value="" {$selDarkDefLight}>Light Mode Default</option>
+                            <option value="activated" {$selDarkDefAct}>Dark Mode Default</option>
                         </select>
                     </div>
                 </div>
@@ -192,24 +241,24 @@ function shufyTheme_output($vars) {
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Sidebar Style</label>
                         <select name="sidebar_layout" class="form-control">
-                            <option value="minimalist__sidebar" {$this_sel($sidebarLayout, 'minimalist__sidebar')}>Minimalist Sidebar</option>
-                            <option value="big__icons__sidebar" {$this_sel($sidebarLayout, 'big__icons__sidebar')}>Big Icons Sidebar</option>
-                            <option value="separated__sidebar" {$this_sel($sidebarLayout, 'separated__sidebar')}>Separated Sidebar</option>
+                            <option value="minimalist__sidebar" {$selSbMin}>Minimalist Sidebar</option>
+                            <option value="big__icons__sidebar" {$selSbBig}>Big Icons Sidebar</option>
+                            <option value="separated__sidebar" {$selSbSep}>Separated Sidebar</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Sidebar Position</label>
                         <select name="sidebar_position" class="form-control">
-                            <option value="sidebarpositionleft" {$this_sel($sidebarPosition, 'sidebarpositionleft')}>Left Position</option>
-                            <option value="sidebarpositionright" {$this_sel($sidebarPosition, 'sidebarpositionright')}>Right Position</option>
-                            <option value="sidebarpositiontop" {$this_sel($sidebarPosition, 'sidebarpositiontop')}>Horizontal Top Bar</option>
+                            <option value="sidebarpositionleft" {$selPosLeft}>Left Position</option>
+                            <option value="sidebarpositionright" {$selPosRight}>Right Position</option>
+                            <option value="sidebarpositiontop" {$selPosTop}>Horizontal Top Bar</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Sticky / Fixed Top Header</label>
                         <select name="fixed_top_header" class="form-control">
-                            <option value="activated" {$this_sel($fixedTopHeader, 'activated')}>Fixed Top Header</option>
-                            <option value="disabled" {$this_sel($fixedTopHeader, 'disabled')}>Absolute Header</option>
+                            <option value="activated" {$selFixHdrAct}>Fixed Top Header</option>
+                            <option value="disabled" {$selFixHdrDis}>Absolute Header</option>
                         </select>
                     </div>
                 </div>
@@ -221,43 +270,43 @@ function shufyTheme_output($vars) {
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">MarketConnect Promo Banner</label>
                         <select name="hp_mc_banners" class="form-control">
-                            <option value="activated" {$this_sel($hpMcBanners, 'activated')}>Show Promo Banner</option>
-                            <option value="disabled" {$this_sel($hpMcBanners, 'disabled')}>Hide</option>
+                            <option value="activated" {$selMcBanAct}>Show Promo Banner</option>
+                            <option value="disabled" {$selMcBanDis}>Hide</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">MarketConnect Navigation</label>
                         <select name="hp_mc_banners_nav" class="form-control">
-                            <option value="activated" {$this_sel($hpMcBannersNav, 'activated')}>Show Navigation Items</option>
-                            <option value="disabled" {$this_sel($hpMcBannersNav, 'disabled')}>Hide</option>
+                            <option value="activated" {$selMcNavAct}>Show Navigation Items</option>
+                            <option value="disabled" {$selMcNavDis}>Hide</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Featured Products Section</label>
                         <select name="hp_products" class="form-control">
-                            <option value="activated" {$this_sel($hpProducts, 'activated')}>Show Featured Products</option>
-                            <option value="disabled" {$this_sel($hpProducts, 'disabled')}>Hide</option>
+                            <option value="activated" {$selProdAct}>Show Featured Products</option>
+                            <option value="disabled" {$selProdDis}>Hide</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Features & Benefits Section</label>
                         <select name="hp_features" class="form-control">
-                            <option value="activated" {$this_sel($hpFeatures, 'activated')}>Show Features</option>
-                            <option value="disabled" {$this_sel($hpFeatures, 'disabled')}>Hide</option>
+                            <option value="activated" {$selFeatAct}>Show Features</option>
+                            <option value="disabled" {$selFeatDis}>Hide</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Latest Announcements</label>
                         <select name="hp_announcements" class="form-control">
-                            <option value="activated" {$this_sel($hpAnnouncements, 'activated')}>Show Announcements</option>
-                            <option value="disabled" {$this_sel($hpAnnouncements, 'disabled')}>Hide</option>
+                            <option value="activated" {$selAnnAct}>Show Announcements</option>
+                            <option value="disabled" {$selAnnDis}>Hide</option>
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label style="font-weight: 600;">Subscribe Section</label>
                         <select name="hp_subscribe" class="form-control">
-                            <option value="activated" {$this_sel($hpSubscribe, 'activated')}>Show Subscribe Form</option>
-                            <option value="disabled" {$this_sel($hpSubscribe, 'disabled')}>Hide</option>
+                            <option value="activated" {$selSubAct}>Show Subscribe Form</option>
+                            <option value="disabled" {$selSubDis}>Hide</option>
                         </select>
                     </div>
                 </div>
@@ -271,8 +320,4 @@ function shufyTheme_output($vars) {
         </form>
     </div>
 HTML;
-}
-
-function this_sel($val1, $val2) {
-    return ($val1 === $val2) ? 'selected="selected"' : '';
 }
