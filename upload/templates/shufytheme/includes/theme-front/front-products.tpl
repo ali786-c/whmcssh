@@ -329,31 +329,6 @@
 
 	
 	<div class="homepage__main__pricing__plans__wrapper row justify-content-start mt-8">
-		{if $activeProductGroups}
-			{foreach $activeProductGroups as $group}
-				<div class="col-lg-4 col-md-6 col-12 mb-8">
-					<div class="homepage__main__pricing__plan__box {$group.color_class}">
-						<div class="homepage__main__pricing__plan__header mb-6">
-							<i class="coodiv-text-7 mb-2 {$group.icon} font-weight-300"></i>
-							<h6 class="coodiv-text-7 font-weight-700 mb-0">{$group.name}</h6>
-							<h6 class="coodiv-text-11 font-weight-700">{$group.headline}</h6>
-						</div>
-						<div class="homepage__main__pricing__plan__body mt-1 mb-9">
-							<p class="coodiv-text-11 font-weight-300">{$group.tagline}</p>
-						</div>
-						<div class="homepage__main__pricing__plan__footer">
-							{if $group.price}
-								<h6 class="plan__pricing coodiv-text-5 font-weight-700 mb-0">{$group.price}</h6>
-							{/if}
-							<p class="sub-title coodiv-text-13 font-weight-300 d-block">Fast, reliable, and easy to use.</p>
-							<a href="{$group.url}" class="btn btn-lg d-block w-100 mt-7">
-								Get {$group.name}
-							</a>
-						</div>
-					</div>
-				</div>
-			{/foreach}
-		{else}
 		{if $coodivhomepagesettings.themehomepagesettingfeaturescolorsplansfirst|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
 			<div class="col-lg col-md-6 col-12 mb-8 mb-lg-0">
 				<div class="homepage__main__pricing__plan__box color__one">
@@ -464,6 +439,7 @@
 		</div>
 		{/if}
 		
+		
 		{if $coodivhomepagesettings.themehomepagesettingfeaturescolorsplansthird|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
 		<div class="col-lg col-md-6 col-12 mb-8 mb-lg-0">
 			<div class="homepage__main__pricing__plan__box color__tree">
@@ -518,7 +494,5 @@
 			</div>
 		</div>
 		{/if}
-		{/if}
-	</div>
 	</div>
 </div>
