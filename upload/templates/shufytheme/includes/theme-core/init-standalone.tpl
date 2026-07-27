@@ -76,10 +76,10 @@
     ] scope="global"}
 {/if}
 
-{if !$shuffythemedirection}
+{if !$shuffythemedirection || $shuffythemedirection|strpos:'verificationcheck' !== false}
     {assign var="shuffythemedirection" value="$template/includes/theme-core/header-layouts/header-default-layout.tpl" scope="global"}
 {/if}
 
-{if !$shuffythemedirectionfooter}
+{if !$shuffythemedirectionfooter || $shuffythemedirectionfooter|strpos:'verificationcheck' !== false}
     {assign var="shuffythemedirectionfooter" value="$template/includes/theme-core/footer-layouts/footer-default-layout.tpl" scope="global"}
 {/if}
