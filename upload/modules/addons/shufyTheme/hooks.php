@@ -118,8 +118,30 @@ add_hook('ClientAreaPage', 10, function($vars) {
             $index = 0;
             foreach ($groups as $group) {
                 $firstProduct = $group->products()->where('hidden', 0)->first();
-                $minPrice = $firstProduct ? $firstProduct->pricing()->minprice() : null;
-                $priceFormatted = $minPrice ? $minPrice->toPrefixed() : '';
+                $priceFormatted = '';
+                if ($firstProduct) {
+                    $pricing = \WHMCS\Database\Capsule::table('tblpricing')
+                        ->where('type', 'product')
+                        ->where('relid', $firstProduct->id)
+                        ->first();
+                    if ($pricing) {
+                        $cycles = ['monthly', 'quarterly', 'semiannually', 'annually', 'biennially', 'triennially'];
+                        $prices = [];
+                        foreach ($cycles as $cycle) {
+                            if (isset($pricing->$cycle) && (float)$pricing->$cycle > 0) {
+                                $prices[] = (float)$pricing->$cycle;
+                            }
+                        }
+                        if (!empty($prices)) {
+                            $minVal = min($prices);
+                            if (function_exists('formatCurrency')) {
+                                $priceFormatted = formatCurrency($minVal);
+                            } else {
+                                $priceFormatted = '$' . number_format($minVal, 2);
+                            }
+                        }
+                    }
+                }
                 
                 $activeGroups[] = [
                     'id' => $group->id,
@@ -134,8 +156,8 @@ add_hook('ClientAreaPage', 10, function($vars) {
                 ];
                 $index++;
             }
-        } catch (\Exception $e) {
-            // Fallback gracefully
+        } catch (\Throwable $e) {
+            // Fallback gracefully on any exception
         }
         return ['activeProductGroups' => $activeGroups];
     }
