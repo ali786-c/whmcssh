@@ -1,72 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kanit:wght@400;500;600&family=Phudu:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 /* ==========================================================================
-   CloudHoste.eu Design System Override for ShufyTheme (WHMCS)
+   CloudHoste.eu High-Contrast Design System Override for ShufyTheme
    ========================================================================== */
 
 :root {
   --ch-lime: #C4EE18;
   --ch-lime-hover: #B8D61A;
   --ch-lime-active: #A3C014;
-  --ch-lime-glow: rgba(196, 238, 24, 0.25);
+  --ch-lime-glow: rgba(196, 238, 24, 0.3);
   
   --ch-bg-body: #0b0e1a;
   --ch-bg-surface: #121314;
   --ch-bg-card: #1A1C1E;
   --ch-text-heading: #FFFFFF;
-  --ch-text-body: #E2E8F0;
-  --ch-text-muted: #A0AEC0;
-  --ch-border-subtle: rgba(255, 255, 255, 0.12);
+  --ch-text-body: #F1F5F9;
+  --ch-text-muted: #CBD5E1;
+  --ch-border-subtle: rgba(255, 255, 255, 0.15);
   
   --ch-font-display: 'Space Grotesk', 'Phudu', sans-serif;
   --ch-font-heading: 'Phudu', 'Inter', sans-serif;
   --ch-font-body: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-body {
+body, html {
   background-color: var(--ch-bg-body) !important;
-  color: var(--ch-text-body);
-  font-family: var(--ch-font-body);
+  color: var(--ch-text-body) !important;
+  font-family: var(--ch-font-body) !important;
 }
 
-h1, h2, h3, h4, h5, h6, .hero-title {
-  font-family: var(--ch-font-display);
-  color: var(--ch-text-heading);
+/* Headings & Titles */
+h1, h2, h3, h4, h5, h6, 
+.hero-title, .title, .coodiv-title, 
+.page-header, .coodiv-text-6, .coodiv-text-8 {
+  font-family: var(--ch-font-display) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
 }
 
-/* Primary Lime CTA Buttons */
-.btn-primary, .btn-success, .btn-action, .ch-btn-lime, button[type="submit"].btn-primary {
+/* Text Visibility & Contrast Fixes */
+p, span, label, li, td, th, div, small, 
+.coodiv-text-12, .coodiv-text-10, .side__bar__item__text, 
+.sidebar__link, .nav-link, .breadcrumb-item, .breadcrumb-item a {
+  color: #F1F5F9 !important;
+}
+
+.text-muted, .sub-title, .coodiv-text-sub {
+  color: #CBD5E1 !important;
+}
+
+/* Links & Accents */
+a {
+  color: var(--ch-lime) !important;
+  transition: color 0.2s ease !important;
+}
+
+a:hover {
+  color: var(--ch-lime-hover) !important;
+  text-decoration: none !important;
+}
+
+.text-primary, .highlight, .lime-accent {
+  color: var(--ch-lime) !important;
+}
+
+/* Primary Electric Lime CTA Buttons */
+.btn-primary, .btn-success, .btn-action, .ch-btn-lime, 
+button[type="submit"].btn-primary, .button.header__button {
   background-color: var(--ch-lime) !important;
   border-color: var(--ch-lime) !important;
   color: #030303 !important;
-  font-family: var(--ch-font-body);
-  font-weight: 600 !important;
+  font-family: var(--ch-font-body) !important;
+  font-weight: 700 !important;
   border-radius: 26px !important;
   box-shadow: 0px 6px 20px var(--ch-lime-glow) !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.btn-primary:hover, .btn-success:hover, .ch-btn-lime:hover, button[type="submit"].btn-primary:hover {
+.btn-primary:hover, .btn-success:hover, .ch-btn-lime:hover, 
+button[type="submit"].btn-primary:hover, .button.header__button:hover {
   background-color: var(--ch-lime-hover) !important;
   border-color: var(--ch-lime-hover) !important;
   color: #030303 !important;
-  transform: translateY(-2px);
-  box-shadow: 0px 10px 28px rgba(196, 238, 24, 0.4) !important;
-}
-
-/* Accent Links & Text */
-a {
-  color: var(--ch-lime);
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--ch-lime-hover);
-  text-decoration: none;
-}
-
-.text-primary, .highlight, .lime-accent {
-  color: var(--ch-lime) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0px 10px 28px rgba(196, 238, 24, 0.45) !important;
 }
 
 /* Header & Top Navigation Bar */
@@ -76,46 +93,84 @@ header.header, .header__row, .fixed__header__layout {
 }
 
 .navbar__coodiv__links a, .header__burger {
-  color: var(--ch-text-heading) !important;
+  color: #FFFFFF !important;
 }
 
-/* Cards & Panel Styling */
-.card, .panel, .section, .coodiv-card {
+/* Sidebar & Navigation Drawer */
+.sidebar, .sidebar__container, .sidebar__body {
+  background-color: var(--ch-bg-surface) !important;
+  border-right: 1px solid var(--ch-border-subtle) !important;
+}
+
+.sidebar__item, .sidebar__link {
+  color: #F1F5F9 !important;
+}
+
+.sidebar__item:hover, .sidebar__link:hover {
+  background-color: rgba(196, 238, 24, 0.1) !important;
+  color: var(--ch-lime) !important;
+}
+
+/* Cards, Panels & Sections */
+.card, .panel, .well, .section, .coodiv-card, 
+.homepage__main__body, .shopping__main__body, .main__page__content {
   background-color: var(--ch-bg-card) !important;
   border: 1px solid var(--ch-border-subtle) !important;
   border-radius: 12px !important;
+  color: #F1F5F9 !important;
 }
 
-/* Badges */
-.badge-primary, .badge-success, .badge-lime {
-  background-color: var(--ch-lime) !important;
-  color: #030303 !important;
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 4px 12px;
+/* Form Controls & Inputs */
+.form-control, input[type="text"], input[type="email"], input[type="password"], 
+input[type="url"], input[type="tel"], select, textarea {
+  background-color: #121314 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 6px !important;
+}
+
+.form-control:focus, input:focus, select:focus, textarea:focus {
+  border-color: var(--ch-lime) !important;
+  box-shadow: 0 0 0 3px var(--ch-lime-glow) !important;
+  color: #FFFFFF !important;
 }
 
 /* Tables */
 .table, .table-theme {
-  color: var(--ch-text-body);
+  background-color: var(--ch-bg-card) !important;
+  color: #F1F5F9 !important;
 }
 
 .table thead th {
-  background-color: var(--ch-bg-surface);
-  color: var(--ch-text-heading);
-  border-bottom: 2px solid var(--ch-border-subtle);
+  background-color: var(--ch-bg-surface) !important;
+  color: #FFFFFF !important;
+  border-bottom: 2px solid var(--ch-border-subtle) !important;
 }
 
 .table td {
-  border-top: 1px solid var(--ch-border-subtle);
+  border-top: 1px solid var(--ch-border-subtle) !important;
+  color: #F1F5F9 !important;
+}
+
+/* Badges */
+.badge-primary, .badge-success, .badge-lime, .side__bar__item__icon__badge {
+  background-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  padding: 4px 12px !important;
 }
 
 /* Footer Styling */
-footer, .footer, .shufy__footer {
+footer, .footer, .shufy__footer, .main__footer__wrapper {
   background-color: #060812 !important;
-  border-top: 1px solid var(--ch-border-subtle);
+  border-top: 1px solid var(--ch-border-subtle) !important;
 }
 
-footer a:hover {
+footer a, .shufy__footer a {
+  color: #F1F5F9 !important;
+}
+
+footer a:hover, .shufy__footer a:hover {
   color: var(--ch-lime) !important;
 }
