@@ -1,0 +1,23 @@
+/* CloudHoste Brand Default Styling Overrides */
+:root {
+  --primary: #C4EE18;
+  --primary-hover: #B8D61A;
+  --primary-color: #C4EE18;
+  --secondary: #4942E4;
+  --ch-lime: #C4EE18;
+  --ch-indigo: #4942E4;
+  --ch-navy: #0b0e1a;
+  --ch-slate-light: #F8FAFC;
+}
+
+.btn-primary {
+  background-color: #C4EE18 !important;
+  color: #030303 !important;
+  border-color: #C4EE18 !important;
+}
+
+.btn-primary:hover {
+  background-color: #B8D61A !important;
+  border-color: #B8D61A !important;
+  color: #030303 !important;
+}

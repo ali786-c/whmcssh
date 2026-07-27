@@ -1,0 +1,155 @@
+/* ==========================================================================
+   CloudHoste Design System - Dual Light & Dark Mode Styling
+   Target Site: https://cloudhoste.eu
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Brand Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --ch-lime: #C4EE18;
+  --ch-lime-hover: #B8D61A;
+  --ch-lime-glow: rgba(196, 238, 24, 0.25);
+  --ch-indigo: #4942E4;
+  --ch-indigo-hover: #3B35C6;
+  
+  --ch-navy: #0b0e1a;
+  --ch-surface-dark: #121314;
+  --ch-surface-card-dark: #1A1C1E;
+  
+  --ch-slate-light: #F8FAFC;
+  --ch-surface-card-light: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Typography & Links (Both Modes)
+   -------------------------------------------------------------------------- */
+a, 
+.nav-link,
+.coodiv-text-primary {
+  color: var(--ch-indigo) !important;
+}
+
+a:hover, 
+.nav-link:hover {
+  color: var(--ch-indigo-hover) !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Primary CTA Buttons (Electric Lime - Both Light & Dark Modes)
+   -------------------------------------------------------------------------- */
+.btn-primary, 
+button.btn-primary, 
+a.btn-primary,
+input[type="submit"].btn-primary,
+.add__new__group__btn,
+.coodiv__btn__primary {
+  background-color: var(--ch-lime) !important;
+  border-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-weight: 600 !important;
+  border-radius: 24px !important;
+  box-shadow: 0px 4px 18px var(--ch-lime-glow) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover, 
+button.btn-primary:hover, 
+a.btn-primary:hover,
+input[type="submit"].btn-primary:hover,
+.add__new__group__btn:hover,
+.coodiv__btn__primary:hover {
+  background-color: var(--ch-lime-hover) !important;
+  border-color: var(--ch-lime-hover) !important;
+  color: #030303 !important;
+  box-shadow: 0px 8px 24px rgba(196, 238, 24, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-outline-primary {
+  background-color: transparent !important;
+  border: 2px solid var(--ch-indigo) !important;
+  color: var(--ch-indigo) !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--ch-indigo) !important;
+  color: #FFFFFF !important;
+}
+
+/* Badges */
+.badge-primary, .bg-primary, .label-primary {
+  background-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-weight: 700 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. DARK MODE SPECIFIC STYLES (Canvas: Deep Navy #0b0e1a)
+   -------------------------------------------------------------------------- */
+body.darkmode,
+html.dark body,
+html[data-bs-theme="dark"] body,
+[data-theme="dark"] body {
+  background-color: var(--ch-navy) !important;
+  color: #E2E8F0 !important;
+}
+
+body.darkmode .card,
+body.darkmode .panel,
+body.darkmode .client-home-panels .panel-default,
+body.darkmode .coodiv__service__card,
+html.dark .card,
+html[data-bs-theme="dark"] .card,
+[data-theme="dark"] .card {
+  background-color: var(--ch-surface-card-dark) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.darkmode h1, body.darkmode h2, body.darkmode h3, 
+body.darkmode h4, body.darkmode h5, body.darkmode h6,
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+  color: #FFFFFF !important;
+}
+
+body.darkmode .header,
+body.darkmode .coodiv__admin__navbar,
+html.dark .header {
+  background-color: var(--ch-surface-dark) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. LIGHT MODE SPECIFIC STYLES (Canvas: Crisp Slate #F8FAFC)
+   -------------------------------------------------------------------------- */
+body:not(.darkmode),
+html:not(.dark) body,
+html[data-bs-theme="light"] body,
+[data-theme="light"] body {
+  background-color: var(--ch-slate-light) !important;
+  color: #334155 !important;
+}
+
+body:not(.darkmode) .card,
+body:not(.darkmode) .panel,
+body:not(.darkmode) .client-home-panels .panel-default,
+body:not(.darkmode) .coodiv__service__card,
+html:not(.dark) .card,
+html[data-bs-theme="light"] .card {
+  background-color: var(--ch-surface-card-light) !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+body:not(.darkmode) h1, body:not(.darkmode) h2, body:not(.darkmode) h3, 
+body:not(.darkmode) h4, body:not(.darkmode) h5, body:not(.darkmode) h6,
+html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4, html:not(.dark) h5, html:not(.dark) h6 {
+  color: #0F172A !important;
+}
+
+body:not(.darkmode) .header,
+html:not(.dark) .header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
