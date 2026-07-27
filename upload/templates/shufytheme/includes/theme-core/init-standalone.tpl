@@ -11,7 +11,13 @@
         'cartdropdown' => 'activated',
         'notificationdropdown' => 'activated',
         'customersnotifications' => '',
-        'gravatar' => 'activated'
+        'gravatar' => 'activated',
+        'defaultlogolinkicon' => "$WEB_ROOT/templates/$template/assets/img/logo-light.svg",
+        'defaultlogolinktagline' => "$WEB_ROOT/templates/$template/assets/img/logo-light.svg",
+        'defaultlogolinkfull' => "$WEB_ROOT/templates/$template/assets/img/logo-light.svg",
+        'darklogolinkicon' => "$WEB_ROOT/templates/$template/assets/img/logo-dark.svg",
+        'darklogolinktagline' => "$WEB_ROOT/templates/$template/assets/img/logo-dark.svg",
+        'darklogolinkfull' => "$WEB_ROOT/templates/$template/assets/img/logo-dark.svg"
     ] scope="global"}
 {/if}
 
