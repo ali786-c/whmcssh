@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	{else}
-		<a aria-label="{$item->getName()} link" menuItemName="{$item->getName()}" id="{$item->getId()}" class="sidebar__item {if $item->getClass()} {$item->getClass()}{/if}" href="{if $item->getName() == 'Home' || $item->getLabel() == 'Home' || $item->getName() == 'Primary Navbar:Home'}https://cloudhoste.eu{else}{$item->getUri()}{/if}" {if $item->getAttribute('target')} target="{$item->getAttribute('target')}"{/if} data-placement="right" title="{$item->getLabel()}">
+		<a aria-label="{$item->getName()} link" menuItemName="{$item->getName()}" id="{$item->getId()}" class="sidebar__item {if $item->getClass()} {$item->getClass()}{/if}" href="{$item->getUri()}" {if $item->getAttribute('target')} target="{$item->getAttribute('target')}"{/if} data-placement="right" title="{$item->getLabel()}">
 			{if $item->hasIcon()}
 			<i class="side__bar__item__icon {$item->getIcon()}"></i>
 			{else}

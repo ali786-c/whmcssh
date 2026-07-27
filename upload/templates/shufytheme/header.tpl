@@ -1,4 +1,3 @@
-{include file="$template/includes/theme-core/init-standalone.tpl"}
 <!doctype html>
 <html {if $coodivcolorsettings.darkmodefault|default:''=='activated'}data-theme="dark"{/if} lang="{$activeLocale.languageCode}">
 <head>
