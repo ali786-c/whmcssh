@@ -1,26 +1,30 @@
 {include file="$template/includes/theme-core/init-standalone.tpl"}
-<div class="main__page__content cloudhoste-homepage-wrapper">
-	<!-- CloudHoste Main Website Hero Banner -->
-	{include file="$template/includes/theme-front/cloudhoste-hero.tpl"}
-	
-	<!-- CloudHoste 4 Circular Service Cards -->
-	{include file="$template/includes/theme-front/cloudhoste-services.tpl"}
-	
-	<!-- CloudHoste Domain Search Filter Section -->
-	{include file="$template/includes/theme-front/cloudhoste-domain-search.tpl"}
-	
-	<!-- WHMCS Featured Products & Pricing Grid -->
-	{if $coodivhomepagesettings.themehomepagesettinghomepagefeaturedsection|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
-		{include file="$template/includes/theme-front/front-products.tpl"}
-	{/if}
-	
-	<!-- WHMCS Features Section -->
-	{if $coodivhomepagesettings.themehomepagesettingservicesfeatures|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
-		{include file="$template/includes/theme-front/front-features.tpl"}
-	{/if}
-	
-	<!-- WHMCS Latest Announcements -->
-	{if $coodivhomepagesettings.themehomepagesettingannouncements|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
-		{include file="$template/includes/theme-front/front-latest-announcements.tpl"}
-	{/if}
-</div>
+{if $shuffythemeversion}
+	<div class="main__page__content">		
+		{if $coodivhomepagesettings.themehomepagesettingmarketconnectbannaers|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/promo-slider-banner.tpl"}
+		{/if}
+		{if $coodivhomepagesettings.themehomepagesettingmarketconnectbannaersnav|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/promo-slider-banner-nav.tpl"}
+		{/if}
+		{if $coodivhomepagesettings.themehomepagesettinghomepagefeaturedsection|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/front-products.tpl"}
+		{/if}
+		
+		{if $coodivhomepagesettings.themehomepagesettingservicesfeatures|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/front-features.tpl"}
+		{/if}
+		
+		{if $coodivhomepagesettings.themehomepagesettingannouncements|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/front-latest-announcements.tpl"}
+		{/if}
+	</div>
+	<div class="full__with__section">
+		{if $coodivhomepagesettings.themehomepagesettingsavingbanner|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/front-get-started-and-save.tpl"}
+		{/if}
+		{if $coodivhomepagesettings.themehomepagesettingsubscribingsection|default:''=='activated' || $coodivhomepagesettings.id|default:'' != '1'}
+			{include file="$template/includes/theme-front/front-subscribe-element.tpl"}
+		{/if}
+	</div>
+{/if}
