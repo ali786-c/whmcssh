@@ -1,148 +1,152 @@
-/* *****************************************************
-
-    ** Custom Stylesheet **
-
-    Any custom styling you want to apply should be
-    defined here.
-
-***************************************************** */
-
-/* Custom CSS for Nexus Cart
- *
- * This block allows you to customize theme colors and styles for the entire Nexus Cart template.
- *
- * To customize colors:
- * - Replace the var() references with your own hex colors or other CSS values.
- * - For example, instead of --primary: #4b5563; use --primary: #your-color;
- * - You can also override any CSS properties here.
- */
-
-html {
-    font-size: 14px;
-}
+/* ==========================================================================
+   CloudHoste Design System Tokens & ShufyTheme Styling Overrides
+   ========================================================================== */
 
 :root {
-    --white: #fff;
+  /* CloudHoste Font Infrastructure */
+  --ch-font-display: 'Space Grotesk', 'Phudu', sans-serif;
+  --ch-font-heading: 'Phudu', 'Inter', sans-serif;
+  --ch-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Primary Brand Tokens */
+  --ch-lime: #C4EE18;
+  --ch-lime-hover: #B8D61A;
+  --ch-lime-active: #A3C014;
+  --ch-lime-glow: rgba(196, 238, 24, 0.25);
+  
+  /* Primary Accent Colors */
+  --ch-indigo: #4942E4;
+  --ch-indigo-hover: #3b35c6;
+  --ch-blue: #0D6EFD;
+  --ch-cyan: #0DCAF0;
+  
+  /* Dark Canvas Defaults */
+  --ch-bg-body-dark: #0b0e1a;
+  --ch-bg-surface-dark: #121314;
+  --ch-bg-card-dark: #1A1C1E;
+  --ch-text-heading-dark: #FFFFFF;
+  --ch-text-body-dark: #E2E8F0;
+  --ch-text-muted-dark: #BFBFC0;
+  --ch-border-dark: rgba(255, 255, 255, 0.1);
 
-    /* Neutral shades */
-    --neutral-50: #fbf9fa;
-    --neutral-100: #f4f5f7;
-    --neutral-200: #e4e4e7;
-    --neutral-300: #d0d5dd;
-    --neutral-400: #9ca3af;
-    --neutral-500: #6b7280;
-    --neutral-600: #4b5563;
-    --neutral-700: #374151;
-    --neutral-800: #1f2937;
-    --neutral-900: #111827;
-    --neutral-950: #030712;
+  /* Light Canvas Defaults */
+  --ch-bg-body-light: #F8FAFC;
+  --ch-bg-surface-light: #FFFFFF;
+  --ch-bg-card-light: #FFFFFF;
+  --ch-text-heading-light: #0F172A;
+  --ch-text-body-light: #334155;
+  --ch-text-muted-light: #64748B;
+  --ch-border-light: rgba(15, 23, 42, 0.12);
+}
 
-    /* Neutral shades */
-    /* define own pallet with brand colors */
-    --primary-50: var(--neutral-50);
-    --primary-100: var(--neutral-100);
-    --primary-200: var(--neutral-200);
-    --primary-300: var(--neutral-300);
-    --primary-400: var(--neutral-400);
-    --primary-500: var(--neutral-500);
-    --primary-600: var(--neutral-600);
-    --primary-700: var(--neutral-700);
-    --primary-800: var(--neutral-800);
-    --primary-900: var(--neutral-900);
-    --primary-950: var(--neutral-900);
+/* ==========================================================================
+   Primary Buttons & CTA Enhancements (CloudHoste Lime & Indigo)
+   ========================================================================== */
 
-    /* Primary colors */
-    /* Use shades from comments if `primary` colors use other colors, then neutral */
-    --primary: var(--neutral-900);          /* var(--primary-600) */
-    --primary-lifted: var(--neutral-800);   /* var(--primary-700) */
-    --primary-accented: var(--neutral-700); /* var(--primary-800) */
+.btn-primary, 
+button.btn-primary, 
+a.btn-primary,
+.add__new__group__btn {
+  background-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-family: var(--ch-font-body);
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  box-shadow: 0px 4px 18px var(--ch-lime-glow) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 
-    /* Secondary colors */
-    --secondary: var(--neutral-500);
-    --secondary-lifted: var(--neutral-600);
-    --secondary-accented: var(--neutral-700);
+.btn-primary:hover, 
+button.btn-primary:hover, 
+a.btn-primary:hover,
+.add__new__group__btn:hover {
+  background-color: var(--ch-lime-hover) !important;
+  color: #030303 !important;
+  box-shadow: 0px 8px 24px rgba(196, 238, 24, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
 
-    /* Success colors */
-    --success: #00a63e;
-    --success-lifted: #008236;
-    --success-accented: #016630;
+.btn-outline-primary,
+.btn-secondary {
+  background: transparent !important;
+  color: var(--ch-indigo) !important;
+  border: 2px solid var(--ch-indigo) !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  transition: all 0.25s ease !important;
+}
 
-    /* Info colors */
-    --info: #155dfc;
-    --info-lifted: #1447e6;
-    --info-accented: #193cb8;
+.btn-outline-primary:hover,
+.btn-secondary:hover {
+  background: var(--ch-indigo) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+}
 
-    /* Notice colors */
-    --notice: #7f22fe;
-    --notice-lifted: #7008e7;
-    --notice-accented: #5d0ec0;
+/* ==========================================================================
+   Dark Mode Palette Overrides (Deep Navy & Slate)
+   ========================================================================== */
 
-    /* Warning colors */
-    --warning: #f54a00;
-    --warning-lifted: #ca3500;
-    --warning-accented: #9f2d00;
+body.darkmode,
+html.dark body,
+[data-theme="dark"] body {
+  background-color: var(--ch-bg-body-dark) !important;
+  color: var(--ch-text-body-dark) !important;
+}
 
-    /* Error colors */
-    --error: #e7000b;
-    --error-lifted: #c10007;
-    --error-accented: #9f0712;
+body.darkmode .card,
+body.darkmode .panel,
+body.darkmode .client-home-panels .panel-default,
+body.darkmode .coodiv__service__card,
+[data-theme="dark"] .card {
+  background-color: var(--ch-bg-card-dark) !important;
+  border: 1px solid var(--ch-border-dark) !important;
+}
 
-    /* Grayscale colors */
-    --grayscale: var(--neutral-900);
-    --grayscale-lifted: var(--neutral-800);
-    --grayscale-accented: var(--neutral-700);
+body.darkmode h1, body.darkmode h2, body.darkmode h3, 
+body.darkmode h4, body.darkmode h5, body.darkmode h6 {
+  color: var(--ch-text-heading-dark) !important;
+}
 
-    /* Neutral colors */
-    --neutral: var(--neutral-500);
-    --neutral-lifted: var(--neutral-600);
-    --neutral-accented: var(--neutral-700);
+/* ==========================================================================
+   Light Mode Palette Overrides (Crisp Slate & White)
+   ========================================================================== */
 
-    /* Text neutral colors */
-    --text-inverted: var(--white);
-    --text-muted: var(--neutral-400);
-    --text-lifted: var(--neutral-500);
-    --text-accented: var(--neutral-600);
-    --text: var(--neutral-900);
+body:not(.darkmode),
+html:not(.dark) body {
+  background-color: var(--ch-bg-body-light);
+  color: var(--ch-text-body-light);
+}
 
-    /* Border neutral colors */
-    --border-muted: var(--neutral-200);
-    --border: var(--neutral-300);
-    --border-lifted: var(--neutral-400);
-    --border-accented: var(--neutral-600);
+body:not(.darkmode) .card,
+body:not(.darkmode) .panel {
+  background-color: var(--ch-bg-card-light);
+  border: 1px solid var(--ch-border-light);
+}
 
-    /* Background neutral colors */
-    --bg: var(--white);
-    --bg-muted: var(--neutral-50);
-    --bg-lifted: var(--neutral-100);
-    --bg-accented: var(--neutral-200);
-    --bg-inverted: var(--neutral-900);
+body:not(.darkmode) h1, body:not(.darkmode) h2, body:not(.darkmode) h3, 
+body:not(.darkmode) h4, body:not(.darkmode) h5, body:not(.darkmode) h6 {
+  color: var(--ch-text-heading-light);
+}
 
-    /* Additional colors */
-    --yellow-200: #fff085;
-    --yellow-300: #ffdf20;
-    --teal-300: #46edd5;
-    --teal-400: #00d5be;
-    --emerald-300: #5ee9b5;
-    --pink-400: #fb64b6;
+/* ==========================================================================
+   Link & Badge Highlights
+   ========================================================================== */
 
-    /* Additional custom properties */
-    /* Font sizes */
-    --text-xs: 0.625rem;
-    --text-sm: 0.75rem;
-    --text-md: 0.875rem;
-    --text-lg: 1rem;
+a {
+  color: var(--ch-indigo);
+  transition: color 0.2s ease;
+}
 
-    /* Spacing */
-    --outline-sm: 1px;
-    --outline-md: 2px;
-    --outline-lg: 3px;
+a:hover {
+  color: var(--ch-indigo-hover);
+}
 
-    /* Rounding */
-    --rounding-sm: 0.25rem;
-    --rounding-md: 0.5rem;
-    --rounding-lg: 0.75rem;
-
-    /* Other */
-    --letter-spacing: 0em;
-    --disabled-opacity: 25%;
+.badge-lime, .label-lime {
+  background-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-weight: 700 !important;
+  padding: 4px 12px !important;
+  border-radius: 12px !important;
 }
