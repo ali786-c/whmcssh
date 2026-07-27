@@ -14,6 +14,7 @@
 <link rel="stylesheet" media="all" href="{$WEB_ROOT}/templates/{$template}/assets/css/bootstrap.rtl.min.css?v={$shuffythemeversion}">
 {/if}
 <link rel="stylesheet" media="all" href="{$WEB_ROOT}/templates/{$template}/assets/css/app.min.css?v={$shuffythemeversion}">
+<link rel="stylesheet" media="all" href="{$WEB_ROOT}/templates/{$template}/assets/css/cloudhoste-theme.css?v={$shuffythemeversion}">
 {if ($language == 'arabic' || $language == 'hebrew' || $language == 'farsi')}
 <link rel="stylesheet" media="all" href="{$WEB_ROOT}/templates/{$template}/assets/css/app.rtl.css?v={$shuffythemeversion}">
 {/if}

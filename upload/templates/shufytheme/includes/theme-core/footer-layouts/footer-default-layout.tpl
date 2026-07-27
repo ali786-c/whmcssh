@@ -164,10 +164,10 @@
 						<div class="bottom__footer__links__wrapper">
 							<h6 class="coodiv-text-8 font-weight-700 footer__title d-flex align-items-center gap-5">{$LANG.shufytheme.footerProduct}</h6>
 							<ul class="bottom__footer__links__list">
-								<li><a href="#">{$LANG.shufytheme.footerWebHosting}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerResellerHosting}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerVpsHosting}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerDedicatedServers}</a></li>
+								<li><a href="https://cloudhoste.eu/web-hosting.html">{$LANG.shufytheme.footerWebHosting}</a></li>
+								<li><a href="https://cloudhoste.eu/reseller-hosting.html">{$LANG.shufytheme.footerResellerHosting}</a></li>
+								<li><a href="https://cloudhoste.eu/vps-hosting.html">{$LANG.shufytheme.footerVpsHosting}</a></li>
+								<li><a href="https://cloudhoste.eu/buy-dedicated-server.html">{$LANG.shufytheme.footerDedicatedServers}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -176,10 +176,10 @@
 						<div class="bottom__footer__links__wrapper">
 							<h6 class="coodiv-text-8 font-weight-700 footer__title d-flex align-items-center gap-5">{$LANG.shufytheme.footerResources}</h6>
 							<ul class="bottom__footer__links__list">
-								<li><a href="#">{$LANG.shufytheme.footerMinecraftHosting}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWebsiteBuilder}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerCpanelReseller}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWordpressHosting}</a></li>
+								<li><a href="https://cloudhoste.eu/cloud-server-hosting.html">Cloud Servers</a></li>
+								<li><a href="https://cloudhoste.eu/website-builder.html">{$LANG.shufytheme.footerWebsiteBuilder}</a></li>
+								<li><a href="https://cloudhoste.eu/n8n-hosting.html">n8n Hosting</a></li>
+								<li><a href="https://cloudhoste.eu/buy-wordpress-hosting.html">{$LANG.shufytheme.footerWordpressHosting}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -188,9 +188,9 @@
 						<div class="bottom__footer__links__wrapper">
 							<h6 class="coodiv-text-8 font-weight-700 footer__title d-flex align-items-center gap-5">{$LANG.shufytheme.footerDomains}</h6>
 							<ul class="bottom__footer__links__list">
-								<li><a href="#">{$LANG.shufytheme.footerDomainChecker}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerFreeDomain}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWhoisChecker}</a></li>
+								<li><a href="https://cloudhoste.eu/domain-search.html">{$LANG.shufytheme.footerDomainChecker}</a></li>
+								<li><a href="https://cloudhoste.eu/domain-transfer.html">Domain Transfer</a></li>
+								<li><a href="https://cloudhoste.eu/domain.html">Domain Overview</a></li>
 							</ul>
 						</div>
 					</div>
@@ -199,14 +199,11 @@
 						<div class="bottom__footer__links__wrapper">
 							<h6 class="coodiv-text-8 font-weight-700 footer__title d-flex align-items-center gap-5">{$LANG.shufytheme.footerServices}</h6>
 							<ul class="bottom__footer__links__list">
-								<li><a href="#">{$LANG.shufytheme.footerSslCertificates}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerEmailServices}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerSiteBuilder}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWebsiteBuilder}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerProfessionalEmail}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWebsiteSecurity}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerWebsiteBackup}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerSeoTools}</a></li>
+								<li><a href="https://cloudhoste.eu/ssl-certificate.html">{$LANG.shufytheme.footerSslCertificates}</a></li>
+								<li><a href="https://cloudhoste.eu/email-service.html">{$LANG.shufytheme.footerEmailServices}</a></li>
+								<li><a href="https://cloudhoste.eu/website-builder.html">{$LANG.shufytheme.footerSiteBuilder}</a></li>
+								<li><a href="https://cloudhoste.eu/ddos-protection.html">{$LANG.shufytheme.footerWebsiteSecurity}</a></li>
+								<li><a href="https://cloudhoste.eu/acronis-backup.html">Acronis Backup</a></li>
 							</ul>
 						</div>
 					</div>
@@ -215,12 +212,8 @@
 						<div class="bottom__footer__links__wrapper">
 							<h6 class="coodiv-text-8 font-weight-700 footer__title d-flex align-items-center gap-5">{$LANG.shufytheme.footerLegal}</h6>
 							<ul class="bottom__footer__links__list">
-								<li><a href="#">{$LANG.shufytheme.privacyPolicy}</a></li>
-								<li><a href="#">{$LANG.shufytheme.termsConditions}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerBrowserCookies}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerLicenses}</a></li>
-								<li><a href="#">{$LANG.shufytheme.footerSettings}</a></li>
-								<li><a href="#">{$LANG.shufytheme.contactus}</a></li>
+								<li><a href="https://cloudhoste.eu/privacy-policy.html">{$LANG.shufytheme.privacyPolicy}</a></li>
+								<li><a href="https://cloudhoste.eu/contact.html">{$LANG.shufytheme.contactus}</a></li>
 							</ul>
 						</div>
 					</div>

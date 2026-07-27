@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kanit:wght@400;500;600&family=Phudu:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ==========================================================================
+   CloudHoste.eu Design System Override for ShufyTheme (WHMCS)
+   ========================================================================== */
+
+:root {
+  --ch-lime: #C4EE18;
+  --ch-lime-hover: #B8D61A;
+  --ch-lime-active: #A3C014;
+  --ch-lime-glow: rgba(196, 238, 24, 0.25);
+  
+  --ch-bg-body: #0b0e1a;
+  --ch-bg-surface: #121314;
+  --ch-bg-card: #1A1C1E;
+  --ch-text-heading: #FFFFFF;
+  --ch-text-body: #E2E8F0;
+  --ch-text-muted: #A0AEC0;
+  --ch-border-subtle: rgba(255, 255, 255, 0.12);
+  
+  --ch-font-display: 'Space Grotesk', 'Phudu', sans-serif;
+  --ch-font-heading: 'Phudu', 'Inter', sans-serif;
+  --ch-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--ch-bg-body) !important;
+  color: var(--ch-text-body);
+  font-family: var(--ch-font-body);
+}
+
+h1, h2, h3, h4, h5, h6, .hero-title {
+  font-family: var(--ch-font-display);
+  color: var(--ch-text-heading);
+}
+
+/* Primary Lime CTA Buttons */
+.btn-primary, .btn-success, .btn-action, .ch-btn-lime, button[type="submit"].btn-primary {
+  background-color: var(--ch-lime) !important;
+  border-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-family: var(--ch-font-body);
+  font-weight: 600 !important;
+  border-radius: 26px !important;
+  box-shadow: 0px 6px 20px var(--ch-lime-glow) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover, .btn-success:hover, .ch-btn-lime:hover, button[type="submit"].btn-primary:hover {
+  background-color: var(--ch-lime-hover) !important;
+  border-color: var(--ch-lime-hover) !important;
+  color: #030303 !important;
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 28px rgba(196, 238, 24, 0.4) !important;
+}
+
+/* Accent Links & Text */
+a {
+  color: var(--ch-lime);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--ch-lime-hover);
+  text-decoration: none;
+}
+
+.text-primary, .highlight, .lime-accent {
+  color: var(--ch-lime) !important;
+}
+
+/* Header & Top Navigation Bar */
+header.header, .header__row, .fixed__header__layout {
+  background-color: var(--ch-bg-surface) !important;
+  border-bottom: 1px solid var(--ch-border-subtle) !important;
+}
+
+.navbar__coodiv__links a, .header__burger {
+  color: var(--ch-text-heading) !important;
+}
+
+/* Cards & Panel Styling */
+.card, .panel, .section, .coodiv-card {
+  background-color: var(--ch-bg-card) !important;
+  border: 1px solid var(--ch-border-subtle) !important;
+  border-radius: 12px !important;
+}
+
+/* Badges */
+.badge-primary, .badge-success, .badge-lime {
+  background-color: var(--ch-lime) !important;
+  color: #030303 !important;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+
+/* Tables */
+.table, .table-theme {
+  color: var(--ch-text-body);
+}
+
+.table thead th {
+  background-color: var(--ch-bg-surface);
+  color: var(--ch-text-heading);
+  border-bottom: 2px solid var(--ch-border-subtle);
+}
+
+.table td {
+  border-top: 1px solid var(--ch-border-subtle);
+}
+
+/* Footer Styling */
+footer, .footer, .shufy__footer {
+  background-color: #060812 !important;
+  border-top: 1px solid var(--ch-border-subtle);
+}
+
+footer a:hover {
+  color: var(--ch-lime) !important;
+}
