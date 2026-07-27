@@ -175,27 +175,27 @@ body {
 	--background:  #fcfdfe;
 	--background-2:#f5faff; 
 	--background-3:#cfecf4;
-	--background-4:#0cbed5;
+	--background-4:#c4ee18;
 	--background-5:#23d4eb;
 	--background-6:#c6e3eb;
 	--background-7:#fff;
 	--background-8:#f4fcff;
 	--background-9:#13274b;
 	--background-10:#bbe4f0;
-	--background-11:#0cbcd3;
-	--background-12:#0bb7d0;
-	--background-13:#0aafc5;
+	--background-11:#c4ee18;
+	--background-12:#b8d61a;
+	--background-13:#a3c014;
 	--background-14:#fff;
 	--background-15:#834ce4;
 	--background-success: #15b7a7;
 	--header-shoping-cart-number-background:#3f51b5;
 	--color-sidebar-h: #161c2d;
 	--btn-border: rgba(3, 3, 3, 0.3);
-	--btn-primary-bg: #0cbed5; 
-	--btn-primary-border: #0cbed5;
+	--btn-primary-bg: #c4ee18; 
+	--btn-primary-border: #c4ee18;
 	--btn-primary-color: #fff;
-	--btn-primary-bg-hover: #09aabf;
-	--btn-primary-border-hover: #09aabf;
+	--btn-primary-bg-hover: #b8d61a;
+	--btn-primary-border-hover: #b8d61a;
 	--btn-primary-color-hover: #fff;
 	--btn-primary-light-bg: #f9f9f9;
 	--btn-primary-light-border: #f9f9f9;
@@ -210,10 +210,10 @@ body {
 	--btn-default-border-hover: #f4f4f4;
 	--btn-default-color-hover: #7e8299;
 	--btn-primary-outlin-bg: #fff; 
-	--btn-primary-outlin-border: #09aabf;
-	--btn-primary-outlin-color: #09aabf;
-	--btn-primary-outlin-bg-hover: #0cbed5;
-	--btn-primary-outlin-border-hover: #0cbed5;
+	--btn-primary-outlin-border: #b8d61a;
+	--btn-primary-outlin-color: #b8d61a;
+	--btn-primary-outlin-bg-hover: #c4ee18;
+	--btn-primary-outlin-border-hover: #c4ee18;
 	--btn-primary-outlin-color-hover: #fff;
 	--btn-primary-outlin-white-bg: transparent; 
 	--btn-primary-outlin-white-border: #fff;
@@ -222,7 +222,7 @@ body {
 	--btn-primary-outlin-white-border-hover: #fff;
 	--btn-primary-outlin-white-color-hover: #0e1019;
 	--btn-primary-outlin-light-bg: transparent; 
-	--btn-primary-outlin-light-border: #16c2d8;
+	--btn-primary-outlin-light-border: #4942e4;
 	--btn-primary-outlin-light-color: #fff;
 	--btn-primary-outlin-light-bg-hover: #fff;
 	--btn-primary-outlin-light-border-hover: #fff;
@@ -235,7 +235,7 @@ body {
 	--color-texts-opacity: #8b93a9;
 	--border-color:#e7e9ed;
 	--border-color-light:#eceff9;
-	--a-link-color: #0cbed5;
+	--a-link-color: #c4ee18;
 	--a-link-color-hover: #088d9f;
 	--btn-light-bg: #f9f9f9;
 	--btn-light-border: #f9f9f9;
@@ -266,23 +266,23 @@ body {
 	--sidebarcolorsdefaultoneitemhoverbg: #FFFFFF;
 	--sidebarcolorsdefaultoneitemtext: #161C2D;
 	--sidebarcolorsdefaultoneitemicon: #161C2D;
-	--sidebarcolorsdefaultoneitemtexthover: #0CBED5;
-	--sidebarcolorsdefaultoneitemiconhover: #0CBED5;
+	--sidebarcolorsdefaultoneitemtexthover: #C4EE18;
+	--sidebarcolorsdefaultoneitemiconhover: #C4EE18;
 	--sidebarcolorsdefaultonedropdownbg: #FFFFFF;
 	--sidebarcolorsdefaultonedropdowntitle: #18191A;
 	--sidebarcolorsdefaultonedropdownitembg: #F9F8FA;
 	--sidebarcolorsdefaultonedropdownitemtext: #758085;
 	--sidebarcolorsdefaultonedropdownitemicon: #758085;
-	--sidebarcolorsdefaultonedropdownitemtexthover: #0CBED5;
-	--sidebarcolorsdefaultonedropdownitemiconhover: #0CBED5;
+	--sidebarcolorsdefaultonedropdownitemtexthover: #C4EE18;
+	--sidebarcolorsdefaultonedropdownitemiconhover: #C4EE18;
 	--sidebarcolorsdarkonebg: #151718;
 	--sidebarcolorsdarkoneextendbtnbg: #2D3031;
 	--sidebarcolorsdarkoneitembg: #2D3031;
 	--sidebarcolorsdarkoneitemhoverbg: #2D3031;
 	--sidebarcolorsdarkoneitemtext: #FFFFFF;
 	--sidebarcolorsdarkoneitemicon: #FFFFFF;
-	--sidebarcolorsdarkoneitemtexthover: #0CBED5;
-	--sidebarcolorsdarkoneitemiconhover: #0cbed5;
+	--sidebarcolorsdarkoneitemtexthover: #C4EE18;
+	--sidebarcolorsdarkoneitemiconhover: #c4ee18;
 	--sidebarcolorsdarkonedropdownbg: #0E0E0F;
 	--sidebarcolorsdarkonedropdowntitle: #FFFFFF;
 	--sidebarcolorsdarkonedropdownitembg: #1A1A1C;
@@ -637,7 +637,7 @@ body.body__dark {
 	--btn-primary-outlin-white-border-hover: #ffffff;
 	--btn-primary-outlin-white-color-hover: #0e1019;
 	--btn-primary-outlin-light-bg: transparent;
-	--btn-primary-outlin-light-border: #16c2d8;
+	--btn-primary-outlin-light-border: #4942e4;
 	--btn-primary-outlin-light-color: #ffffff;
 	--btn-primary-outlin-light-bg-hover: #ffffff;
 	--btn-primary-outlin-light-border-hover: #ffffff;
@@ -11145,7 +11145,7 @@ body.sticky__scondary__menu .full__width__secondarysidebar__menu .nav-item .nav-
 #order-standard_cart .domain-selection-options .domain-productconfigiration-options-item .iradio_square-blue.checked ~ .title:after{
     content: '';
     height: 1.4px;
-    background: #0cbed5;
+    background: #c4ee18;
     position: absolute;
     bottom: -8px;
     left: 0;
@@ -19151,7 +19151,7 @@ body.body__dark .shufy__theme__logo__icon__one {
 }
 [data-theme="dark"] body .shufy__theme__logo__icon__two,
 body.body__dark .shufy__theme__logo__icon__two {
-    fill: #0aafc5 !important;
+    fill: #a3c014 !important;
 }
 [data-theme="dark"] body .shufy__theme__logo__text,
 body.body__dark .shufy__theme__logo__text {
@@ -19215,7 +19215,7 @@ body.body__dark .boxes__loading .box > div:nth-child(1) {
 }
 [data-theme="dark"] body .boxes__loading .box > div:nth-child(2),
 body.body__dark .boxes__loading .box > div:nth-child(2) {
-    --background: #0aafc5;
+    --background: #a3c014;
 }
 [data-theme="dark"] body .boxes__loading .box > div:nth-child(3),
 body.body__dark .boxes__loading .box > div:nth-child(3) {
@@ -19223,7 +19223,7 @@ body.body__dark .boxes__loading .box > div:nth-child(3) {
 }
 [data-theme="dark"] body .boxes__loading .box > div:nth-child(4),
 body.body__dark .boxes__loading .box > div:nth-child(4) {
-    --background: #0cbed5;
+    --background: #c4ee18;
 }
 body.horizontal__sidebar.body__dark .sidebar .sidebar__menu .sidebar__item.sidebar__item_dropdown .sidebar__body:after {
     background: var(--sidebarcolorsdefaultonedropdownbg);
