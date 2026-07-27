@@ -96,3 +96,9 @@ add_hook('ClientAreaPage', 1, function($vars) {
 
     return $defaults;
 });
+
+add_hook('ClientAreaPrimaryNavbar', 1, function($primaryNavbar) {
+    if (!is_null($primaryNavbar->getChild('Home'))) {
+        $primaryNavbar->getChild('Home')->setUri('https://cloudhoste.eu');
+    }
+});

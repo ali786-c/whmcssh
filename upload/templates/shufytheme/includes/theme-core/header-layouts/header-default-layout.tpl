@@ -79,7 +79,7 @@
 	<div class="sidebar__container">
 		{if $coodivlayoutssettings.layoutsettingssidebarstyle|default:''=='sidebarsidebarlogo' || $coodivlayoutssettings.id|default:'' != '1'}
 		<div class="website__identity__sidebar d-flex align-items-center">		
-			<a aria-label="Website homepage" class="website__identity__sidebar__link" href="{$WEB_ROOT}/index.php">
+			<a aria-label="Website homepage" class="website__identity__sidebar__link" href="https://cloudhoste.eu">
 				{if $coodivsettings.siteaslogo|default:''=='activated'}
 					<div class="website__identity__sidebar__text__logo__wrapper">
 						<span class="website__identity__sidebar__text__logo__first__later">
