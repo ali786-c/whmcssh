@@ -101,4 +101,9 @@ add_hook('ClientAreaPrimaryNavbar', 1, function($primaryNavbar) {
     if (!is_null($primaryNavbar->getChild('Home'))) {
         $primaryNavbar->getChild('Home')->setUri('https://cloudhoste.eu');
     }
+    foreach ($primaryNavbar->getChildren() as $child) {
+        if (strtolower($child->getName()) === 'home' || strtolower($child->getLabel()) === 'home') {
+            $child->setUri('https://cloudhoste.eu');
+        }
+    }
 });
