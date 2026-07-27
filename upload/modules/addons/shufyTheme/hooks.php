@@ -107,3 +107,57 @@ add_hook('ClientAreaPrimaryNavbar', 1, function($primaryNavbar) {
         }
     }
 });
+
+add_hook('ClientAreaPageHome', 1, function($vars) {
+    $groups = [];
+    try {
+        $currency = \WHMCS\Database\Capsule::table('tblcurrencies')->where('default', 1)->first();
+        $prefix = $currency->prefix ?? '€';
+        
+        $productGroups = \WHMCS\Database\Capsule::table('tblproductgroups')
+            ->where('hidden', 0)
+            ->orderBy('order', 'asc')
+            ->get();
+            
+        $colors = ['blue', 'green', 'purple', 'amber'];
+        $icons = ['fab fa-wordpress', 'fas fa-server', 'fas fa-desktop', 'fas fa-hdd', 'fas fa-cloud'];
+        
+        $i = 0;
+        foreach ($productGroups as $pg) {
+            $minPrice = null;
+            $product = \WHMCS\Database\Capsule::table('tblproducts')
+                ->where('gid', $pg->id)
+                ->where('hidden', 0)
+                ->orderBy('order', 'asc')
+                ->first();
+                
+            if ($product) {
+                $pricing = \WHMCS\Database\Capsule::table('tblpricing')
+                    ->where('type', 'product')
+                    ->where('relid', $product->id)
+                    ->first();
+                if ($pricing) {
+                    if ($pricing->monthly > 0) $minPrice = $prefix . number_format($pricing->monthly, 2) . '/mo';
+                    elseif ($pricing->annually > 0) $minPrice = $prefix . number_format($pricing->annually / 12, 2) . '/mo';
+                }
+            }
+            
+            $groups[] = [
+                'id' => $pg->id,
+                'name' => $pg->name,
+                'headline' => $pg->headline ?: 'Optimized for speed and security.',
+                'tagline' => $pg->tagline ?: 'High-performance cloud & web hosting platform for your business.',
+                'slug' => $pg->slug,
+                'color' => $colors[$i % count($colors)],
+                'icon' => $icons[$i % count($icons)],
+                'minPrice' => $minPrice ?: ($prefix . '2.49/mo'),
+                'url' => ($vars['WEB_ROOT'] ?? '') . '/cart.php?gid=' . $pg->id
+            ];
+            $i++;
+        }
+    } catch (\Exception $e) {
+        // Fallback
+    }
+    
+    return ['chDynamicProductGroups' => $groups];
+});

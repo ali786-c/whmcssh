@@ -110,3 +110,63 @@ body:not(.darkmode) .panel,
   text-decoration: none !important;
   box-shadow: none !important;
 }
+
+/* Product Group Card Pastel Mockup Tints (Light Mode) */
+.ch-card-blue {
+  background-color: #EBF8FF !important;
+  color: #0F172A !important;
+}
+.ch-btn-card-blue {
+  background-color: #00A8E8 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.ch-card-green {
+  background-color: #F0FDF4 !important;
+  color: #0F172A !important;
+}
+.ch-btn-card-green {
+  background-color: #22C55E !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.ch-card-purple {
+  background-color: #F5F3FF !important;
+  color: #0F172A !important;
+}
+.ch-btn-card-purple {
+  background-color: #8B5CF6 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.ch-card-amber {
+  background-color: #FEF3C7 !important;
+  color: #0F172A !important;
+}
+.ch-btn-card-amber {
+  background-color: #F59E0B !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+/* Dark Mode Card Overrides */
+body.darkmode .ch-product-group-card,
+html.dark .ch-product-group-card,
+[data-theme="dark"] .ch-product-group-card {
+  background-color: #1E293B !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+body.darkmode .ch-card-title,
+html.dark .ch-card-title,
+[data-theme="dark"] .ch-card-title {
+  color: #FFFFFF !important;
+}
+body.darkmode .ch-card-headline,
+html.dark .ch-card-headline,
+[data-theme="dark"] .ch-card-headline {
+  color: #C4EE18 !important;
+}
