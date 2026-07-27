@@ -34,12 +34,7 @@
 {if $coodivtypographiesettings.id|default:'' == '1'}
 <link rel="stylesheet" media="all" href="{$css_base}/typographie.css">
 {/if}
-{assetExists file="custom.css"}
-<link href="{$__assetPath__}" rel="stylesheet">
-{/assetExists}
-{if $coodivsettings.customcsscode|default:'' != null}
-<link rel="stylesheet" media="all" href="{$css_base}/custom.css?v={$coodivsettings.customcss_version|default:''}">
-{/if}
+<link rel="stylesheet" media="all" href="{$WEB_ROOT}/templates/{$template}/assets/css/custom.css?v={$shuffythemeversion}">
 {if $coodivhomepagesettings.id|default:'' == '1'}
 <link rel="stylesheet" media="all" href="{$css_base}/homepage-plans.css?v={$coodivsettings.customcss_version|default:''}">
 {/if}
