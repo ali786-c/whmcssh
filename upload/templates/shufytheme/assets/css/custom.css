@@ -89,3 +89,24 @@ body:not(.darkmode) .panel,
   background-color: #FFFFFF !important;
   border: 1px solid rgba(15, 23, 42, 0.12) !important;
 }
+
+/* Disable hover movement/jumping on header and footer logos */
+.website__identity__sidebar__link,
+.website__identity__sidebar__link:hover,
+.website__identity__sidebar__link:focus,
+.website__identity__sidebar__link:active,
+.website__identity__sidebar__link img,
+.website__identity__sidebar__link img:hover,
+.website__identity__sidebar,
+.website__identity__sidebar:hover,
+.footer__logo__wrapper a,
+.footer__logo__wrapper a:hover,
+.footer__logo__wrapper a img,
+.footer__logo__wrapper a img:hover {
+  transform: none !important;
+  transition: none !important;
+  margin-top: 0 !important;
+  top: 0 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
