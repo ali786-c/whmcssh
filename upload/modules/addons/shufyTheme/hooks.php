@@ -1,7 +1,7 @@
 <?php
 /**
  * ShufyTheme Standalone Engine Hooks
- * Dynamically loads settings saved from the Control Panel in WHMCS Admin
+ * Auto-Active & Unencrypted - Integrates with Coodiv Control Panel & Database
  */
 
 if (!defined("WHMCS")) {
@@ -10,45 +10,49 @@ if (!defined("WHMCS")) {
 
 use WHMCS\Database\Capsule;
 
+function shufyTheme_get_all_settings_db() {
+    $settings = [];
+    try {
+        $rows = Capsule::table('tbladdonmodules')
+            ->where('module', 'shufyTheme')
+            ->get();
+        foreach ($rows as $row) {
+            $settings[$row->setting] = $row->value;
+        }
+    } catch (\Exception $e) {
+        // Fallback
+    }
+    return $settings;
+}
+
 add_hook('ClientAreaPage', 1, function($vars) {
     $template = $vars['template'] ?? 'shufytheme';
+    $dbSettings = shufyTheme_get_all_settings_db();
 
-    // Helper to get saved DB setting with default fallback
-    $getSetting = function($key, $default) {
-        try {
-            $row = Capsule::table('tbladdonmodules')
-                ->where('module', 'shufyTheme')
-                ->where('setting', $key)
-                ->first();
-            return ($row && !empty($row->value)) ? $row->value : $default;
-        } catch (\Exception $e) {
-            return $default;
-        }
-    };
-
-    return [
+    // Default configuration mapping
+    $defaults = [
         'shuffythemeversion' => '1.3.2',
         'shuffythemedirection' => "templates/{$template}/includes/theme-core/header-layouts/header-default-layout.tpl",
         'shuffythemedirectionfooter' => "templates/{$template}/includes/theme-core/footer-layouts/footer-default-layout.tpl",
-        'coodivsettings' => [
+        'coodivsettings' => array_merge([
             'id' => '1',
-            'customthemeloader' => $getSetting('custom_loader', 'loaderdisbaled'),
-            'userdropdown' => $getSetting('user_dropdown', 'activated'),
-            'cartdropdown' => $getSetting('cart_dropdown', 'activated'),
-            'notificationdropdown' => $getSetting('notification_dropdown', 'activated'),
+            'customthemeloader' => 'loaderdisbaled',
+            'userdropdown' => 'activated',
+            'cartdropdown' => 'activated',
+            'notificationdropdown' => 'activated',
             'customersnotifications' => '',
             'gravatar' => 'activated'
-        ],
-        'coodivcolorsettings' => [
+        ], $dbSettings),
+        'coodivcolorsettings' => array_merge([
             'id' => '1',
-            'allowdarkmode' => $getSetting('allow_dark_mode', 'activated'),
-            'darkmodefault' => $getSetting('default_dark_mode', ''),
-            'dafaultthemecolor' => $getSetting('theme_color', 'default-color')
-        ],
-        'coodivsidebaroptions' => [
+            'allowdarkmode' => 'activated',
+            'darkmodefault' => '',
+            'dafaultthemecolor' => 'default-color'
+        ], $dbSettings),
+        'coodivsidebaroptions' => array_merge([
             'id' => '1',
-            'themesidebarsettingsfixedtopheader' => $getSetting('fixed_top_header', 'activated'),
-            'themesidebarsettingsfixedhorizontalmenu' => $getSetting('fixed_horizontal_menu', 'activated'),
+            'themesidebarsettingsfixedtopheader' => 'activated',
+            'themesidebarsettingsfixedhorizontalmenu' => 'activated',
             'themesidebarsettingsfixedsecondarymenu' => 'activated',
             'themesidebarsettingssidebaronhover' => 'activated',
             'themesidebarsettingschildonhover' => 'activated',
@@ -60,23 +64,26 @@ add_hook('ClientAreaPage', 1, function($vars) {
             'themesidebarsettingsallowusertoexpend' => 'activated',
             'themesidebarsettingsallowusertocollapse' => 'activated',
             'themesidebarsettingscollapsed' => ''
-        ],
-        'coodivlayoutssettings' => [
+        ], $dbSettings),
+        'coodivlayoutssettings' => array_merge([
             'id' => '1',
-            'layoutsettingssidebarlayout' => $getSetting('sidebar_layout', 'minimalist__sidebar'),
-            'layoutsettingssidebarposition' => $getSetting('sidebar_position', 'sidebarpositionleft'),
-            'layoutsettingssidebarstyle' => $getSetting('sidebar_style', 'sidebarheaderlogo')
-        ],
-        'coodivhomepagesettings' => [
+            'layoutsettingssidebarlayout' => 'minimalist__sidebar',
+            'layoutsettingssidebarposition' => 'sidebarpositionleft',
+            'layoutsettingssidebarstyle' => 'sidebarheaderlogo'
+        ], $dbSettings),
+        'coodivhomepagesettings' => array_merge([
             'id' => '1',
-            'themehomepagesettingmarketconnectbannaers' => $getSetting('hp_mc_banners', 'activated'),
-            'themehomepagesettingmarketconnectbannaersnav' => $getSetting('hp_mc_banners_nav', 'activated'),
-            'themehomepagesettinghomepagefeaturedsection' => $getSetting('hp_products', 'activated'),
-            'themehomepagesettingservicesfeatures' => $getSetting('hp_features', 'activated'),
-            'themehomepagesettingannouncements' => $getSetting('hp_announcements', 'activated'),
-            'themehomepagesettingsavingbanner' => $getSetting('hp_saving_banner', 'activated'),
-            'themehomepagesettingsubscribingsection' => $getSetting('hp_subscribe', 'activated')
-        ],
+            'themehomepagesettingmarketconnectbannaers' => 'activated',
+            'themehomepagesettingmarketconnectbannaersnav' => 'activated',
+            'themehomepagesettinghomepagefeaturedsection' => 'activated',
+            'themehomepagesettingservicesfeatures' => 'activated',
+            'themehomepagesettingannouncements' => 'activated',
+            'themehomepagesettingsavingbanner' => 'activated',
+            'themehomepagesettingsubscribingsection' => 'activated'
+        ], $dbSettings),
+        'coodivtypographiesettings' => array_merge([
+            'id' => '1'
+        ], $dbSettings),
         'CoodivMarketConnectServices' => [
             ['name' => 'sitebuilder', 'productGroup' => ['slug' => 'website-builder']],
             ['name' => 'codeguard', 'productGroup' => ['slug' => 'codeguard']],
@@ -86,4 +93,6 @@ add_hook('ClientAreaPage', 1, function($vars) {
             ['name' => 'weebly', 'productGroup' => ['slug' => 'weebly']]
         ]
     ];
+
+    return $defaults;
 });
