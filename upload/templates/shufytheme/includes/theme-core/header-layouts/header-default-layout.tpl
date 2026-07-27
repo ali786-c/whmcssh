@@ -26,8 +26,13 @@
 								</span>
 							</div>
 						{else}
-							<img class="image__logo__tagline white__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-light.svg" alt="{$companyname}" style="height: 38px;" />
-							<img class="image__logo__tagline dark__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-dark.svg" alt="{$companyname}" style="height: 38px;" />
+							{if $coodivsettings.defaultlogolinkfull|default:''}
+								<img class="image__logo__tagline white__logo custom__website__full__logo" src="{$coodivsettings.defaultlogolinkfull|default:''}" alt="{$companyname} logo" />
+								<img class="image__logo__tagline dark__logo custom__website__full__logo" src="{$coodivsettings.darklogolinkfull|default:''}" alt="{$companyname} logo" />
+							{else}
+								<img class="image__logo__tagline white__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-light.svg" alt="{$companyname}" style="height: 38px;" />
+								<img class="image__logo__tagline dark__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-dark.svg" alt="{$companyname}" style="height: 38px;" />
+							{/if}
 						{/if}
 					</a>
 				</div>
@@ -100,8 +105,13 @@
 						</span>
 					</div>
 				{else}
-					<img class="image__logo__tagline white__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-light.svg" alt="{$companyname}" style="height: 38px;" />
-					<img class="image__logo__tagline dark__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-dark.svg" alt="{$companyname}" style="height: 38px;" />
+					{if $coodivsettings.defaultlogolinkfull|default:''}
+						<img class="image__logo__tagline white__logo custom__website__full__logo" src="{$coodivsettings.defaultlogolinkfull|default:''}" alt="{$companyname} logo" />
+						<img class="image__logo__tagline dark__logo custom__website__full__logo" src="{$coodivsettings.darklogolinkfull|default:''}" alt="{$companyname} logo" />
+					{else}
+						<img class="image__logo__tagline white__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-light.svg" alt="{$companyname}" style="height: 38px;" />
+						<img class="image__logo__tagline dark__logo" src="{$WEB_ROOT}/templates/{$template}/assets/img/logo-dark.svg" alt="{$companyname}" style="height: 38px;" />
+					{/if}
 				{/if}
 			</a>
 		</div>
